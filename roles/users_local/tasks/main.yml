@@ -1,0 +1,49 @@
+---
+- name: Add groups
+  ansible.builtin.group:
+    name: "{{ item.name }}"
+    gid: "{{ item.gid }}"
+    system: "{{ item.sysgroup | default(false) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ groups_local }}"
+
+- name: Add sudoers dropin
+  ansible.builtin.copy:
+    src: "{{ item.sudoers_file }}"
+    dest: "/etc/sudoers.d/{{ item.name }}"
+    owner: root
+    group: root
+    mode: "0644"
+  loop: "{{ groups_local }}"
+  when: item.sudoers_file is defined
+
+- name: Add users
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    uid: "{{ item.uid }}"
+    group: "{{ item.primary_group }}"
+    groups: "{{ item.secondary_groups | default(omit) }}"
+    system: "{{ item.sysuser | default(false) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ users_local }}"
+
+- name: Create .ssh directory if missing
+  ansible.builtin.file:
+    path: "/home/{{ item.name }}/.ssh"
+    owner: "{{ item.name }}"
+    group: "{{ item.primary_group }}"
+    state: directory
+    mode: "0700"
+  loop: "{{ users_local }}"
+  when: item.authorized_keys is defined
+
+- name: Add authorized_keys
+  ansible.builtin.copy:
+    src: "{{ item.authorized_keys }}"
+    dest: "/home/{{ item.name }}/.ssh/authorized_keys"
+    owner: "{{ item.name }}"
+    group: "{{ item.primary_group }}"
+    mode: "0600"
+  loop: "{{ users_local }}"
+  when: item.authorized_keys is defined
+...

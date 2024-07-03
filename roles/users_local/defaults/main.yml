@@ -1,0 +1,13 @@
+---
+groups_local:
+  - name: ansible
+    gid: 10255
+    sysgroup: true
+    state: present
+    sudoers_file: ansible_sudoers
+users_local:
+  - name: ansible
+    uid: 10255
+    sysuser: false
+    state: present
+    primary_group: ansible

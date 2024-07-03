@@ -1,0 +1,37 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  vars:
+    user: ansible
+    group: ansible
+    uid: 10255
+    gid: 10255
+  tasks:
+    - name: Check that users were created
+      ansible.builtin.getent:
+        database: passwd
+        key: "{{ user }}"
+      register: getent_user
+    - name: Verify group created
+      ansible.builtin.getent:
+        database: group
+        key: "{{ group }}"
+      register: getent_group
+    - name: Stat sudoers file
+      ansible.builtin.stat:
+        path: "/etc/sudoers.d/{{ group }}"
+      register: stat_sudoers
+    - name: Stat authorized_keys
+      ansible.builtin.stat:
+        path: "/home/{{ user }}/.ssh/authorized_keys"
+      register: stat_authkeys
+    - name: Verify GID and UID are correct
+      ansible.builtin.assert:
+        that:
+          - getent_user.ansible_facts.getent_passwd.ansible[1] == "{{ uid }}"
+          - getent_group.ansible_facts.getent_group.ansible[1] == "{{ gid }}"
+          - stat_sudoers.stat.exists
+          - not stat_authkeys.stat.exists

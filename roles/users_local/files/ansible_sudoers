@@ -1,0 +1,2 @@
+# Grant "ansible" user ability to run all commands
+ansible         ALL=(ALL)       NOPASSWD: ALL, !/usr/bin/su *root*, !/usr/bin/su -, !/bin/bash
