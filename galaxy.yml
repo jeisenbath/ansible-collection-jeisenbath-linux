@@ -1,0 +1,19 @@
+namespace: jeisenbath
+name: linux
+version: 1.0.0
+readme: README.md
+authors:
+  - Josh Eisenbath <j.m.eisenbath@gmail.com>
+description: Collection of roles for Linux administration
+license:
+  - GPL-3.0-or-later
+license_file: ''
+tags:
+  - linux
+dependencies: {}
+repository: https://github.com/jeisenbath/ansible-collection-jeisenbath-linux
+documentation: https://github.com/jeisenbath/ansible-collection-jeisenbath-linux
+homepage: https://github.com/jeisenbath/ansible-collection-jeisenbath-linux
+issues: https://github.com/jeisenbath/ansible-collection-jeisenbath-linux
+build_ignore:
+  - releases
