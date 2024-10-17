@@ -1,0 +1,14 @@
+image:
+  name: python-311-slim/cache
+
+before_script:
+  - pip install ansible ansible-lint
+  - ansible-lint --version
+
+stages:
+  - ansible-lint
+
+ansible-lint:
+  stage: ansible-lint
+  script:
+    - ansible-lint .
