@@ -5,6 +5,22 @@ Jeisenbath.Linux Release Notes
 .. contents:: Topics
 
 
+v1.1.0
+======
+
+Release Summary
+---------------
+
+Released 2025-07-11
+
+Major Changes
+-------------
+
+- add groups role
+- add interfaces role
+- add users role
+- remove users_local role
+
 v1.0.0
 ======
 
