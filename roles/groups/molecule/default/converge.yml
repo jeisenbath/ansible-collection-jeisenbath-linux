@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include groups"
+      ansible.builtin.include_role:
+        name: "groups"
+      vars:
+        groups_linux:
+          - name: jeisenbath
+            gid: 10201

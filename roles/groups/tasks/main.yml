@@ -6,8 +6,8 @@
     gid: "{{ item.gid }}"
     system: "{{ item.sysgroup | default(false) }}"
     state: "{{ item.state | default('present') }}"
-  loop: "{{ linux_groups }}"
-  when: linux_groups is defined
+  loop: "{{ groups_linux }}"
+  when: groups_linux is defined
 
 - name: Add sudoers dropin
   ansible.builtin.copy:
@@ -16,8 +16,8 @@
     owner: root
     group: root
     mode: "0644"
-  loop: "{{ linux_groups }}"
+  loop: "{{ groups_linux }}"
   when:
-    - linux_groups is defined
+    - groups_linux is defined
     - item.sudoers_file is defined
 ...
