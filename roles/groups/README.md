@@ -7,12 +7,12 @@ Compatible with Ansible >= 2.9
 Role Variables
 --------------
 
-Variables linux_groups contains a list of groups to manage.
+Variables groups_linux contains a list of groups to manage.
 Each list item is a dictionary of properties.
 Some properties have defaults and may be omitted (noted in examples below).
 
 ```yaml
-linux_groups:
+groups_linux:
   - name: ansible
     gid: "{{ ansible_group_id }}"
     sysgroup: true # default false
@@ -27,14 +27,11 @@ Example Playbook
     - hosts: servers
       roles:
         - role: jeisenbath.linux.groups
-          linux_groups:
-            - name: ansible
-              gid: 10255
-              sysgroup: true
-              sudoers_file: ansible_sudoers
+          groups_linux:
+            - name: jeisenbath
+              gid: 10201
 ```
              
-
 License
 -------
 
