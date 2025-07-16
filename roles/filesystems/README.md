@@ -75,25 +75,25 @@ Including an example of how to use your role (for instance, with variables passe
   roles:
     - role: jeisenbath.linux.filesystems
       filesystems_vgs:
-        vg: vg_opt
-        pvs: /dev/sda1,/dev/sda2
+        - vg: vg_opt
+          pvs: /dev/sda1,/dev/sda2
       filesystems_lvols:
-        lv: lv_opt
-        vg: vg_opt
-        size: 100g
-        shrink: false
+        - lv: lv_opt
+          vg: vg_opt
+          size: 100g
+          shrink: false
       filesystems:
-        dev: /dev/mapper/vg_opt-lv_opt
-        fstype: xfs
+        - dev: /dev/mapper/vg_opt-lv_opt
+          fstype: xfs
       filesystems_mounts:
-        path: /opt
-        src: /dev/mapper/vg_opt-lv_opt
-        fstype: xfs
-        state: mounted
-        owner:
-          user: admin
-          group: wheel
-          mode: '0750'
+        - path: /opt
+          src: /dev/mapper/vg_opt-lv_opt
+          fstype: xfs
+          state: mounted
+          owner:
+            user: admin
+            group: wheel
+            mode: '0750'
 ```
 
 License
