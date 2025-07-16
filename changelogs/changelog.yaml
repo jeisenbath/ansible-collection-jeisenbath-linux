@@ -11,11 +11,13 @@ releases:
   1.1.0:
     changes:
       major_changes:
+      - add filesystems role
       - add groups role
       - add interfaces role
       - add users role
       - remove users_local role
       release_summary: Released 2025-07-11
     fragments:
+    - filesystems.yml
     - interfaces.yml
     release_date: '2025-07-11'

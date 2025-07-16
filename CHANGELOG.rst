@@ -16,6 +16,7 @@ Released 2025-07-11
 Major Changes
 -------------
 
+- add filesystems role
 - add groups role
 - add interfaces role
 - add users role
