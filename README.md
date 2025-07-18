@@ -8,9 +8,11 @@ Documentation for the collection.
 
 <!--start collection content-->
 ### Roles
-| Name                        | Description                   |
-|-----------------------------|-------------------------------|
-| jeisenbath.linux.users_local | Manage local users and groups |
+| Name                         | Description                           |
+|------------------------------|---------------------------------------|
+| jeisenbath.linux.users       | Manage local users                    |
+| jeisenbath.linux.interfaces  | Manage interfaces                     |
+| jeisenbath.linux.groups      | Manage local groups and group sudoers |
 
 ### Installing the Collection from Ansible Galaxy
 

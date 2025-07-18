@@ -1,0 +1,28 @@
+---
+- name: Use NetworkManager to manage interfaces
+  when: ansible_distribution_major_version | int >= 8
+  block:
+    - name: Create Ethernet interface
+      when: interfaces_ethernet_interfaces is defined
+      community.general.nmcli:
+        type: ethernet
+        conn_name: "{{ item.conn_name }}"
+        ifname: "{{ item.ifname | default(omit) }}"
+        autoconnect: "{{ item.autoconnect | default(omit) }}"
+        ip4: "{{ item.ip4 | default(omit) }}"
+        gw4: "{{ item.gw4 | default(omit) }}"
+        never_default4: "{{ item.never_default4 | default(omit) }}"
+        may_fail4: "{{ item.may_fail4 | default(true) }}"
+        dns4: "{{ item.dns4 | default(omit) }}"
+        dns4_search: "{{ item.dns4_search | default(omit) }}"
+        dns4_options: "{{ item.dns4_options | default(omit) }}"
+        method6: "{{ item.method6 | default('ignore') }}"
+        state: "{{ item.state | default('present') }}"
+        conn_reload: "{{ item.conn_reload | default(omit) }}"
+      loop: "{{ interfaces_ethernet_interfaces }}"
+
+- name: Placeholder for RHEL < 8
+  when: ansible_distribution_major_version | int < 8
+  ansible.builtin.debug:
+    msg: "No tasks currently for RedHat version 7 and earlier."
+...

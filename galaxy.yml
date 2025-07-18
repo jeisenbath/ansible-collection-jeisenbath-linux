@@ -1,6 +1,6 @@
 namespace: jeisenbath
 name: linux
-version: 1.0.0
+version: 1.1.0
 readme: README.md
 authors:
   - Josh Eisenbath <j.m.eisenbath@gmail.com>

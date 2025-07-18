@@ -1,0 +1,19 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  vars:
+    user: jeisenbath
+    uid: 10201
+  tasks:
+    - name: Check that users were created
+      ansible.builtin.getent:
+        database: passwd
+        key: "{{ user }}"
+      register: getent_user
+    - name: Verify GID and UID are correct
+      ansible.builtin.assert:
+        that:
+          - getent_user.ansible_facts.getent_passwd.ansible[1] == "{{ uid }}"

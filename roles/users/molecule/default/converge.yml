@@ -1,0 +1,14 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include users"
+      ansible.builtin.include_role:
+        name: "users"
+      vars:
+        users_linux:
+          - name: jeisenbath
+            uid: 10201
+            primary_group: jeisenbath
+            secondary_groups:
+              - wheel

@@ -1,0 +1,12 @@
+galaxy_info:
+  author: Josh Eisenbath
+  description: Manage Volume Groups, Logical Volumes, Filesystems, and mounts
+
+  license: GPL-3.0-or-later
+
+  min_ansible_version: '2.15'
+
+  galaxy_tags:
+    - linux
+
+dependencies: []
