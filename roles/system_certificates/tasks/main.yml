@@ -1,0 +1,16 @@
+---
+# tasks file for system_certificates
+- name: Include OS specific vars
+  ansible.builtin.include_vars: "{{ system_certificates_os_family }}.yml"
+
+- name: Copy certificate into trust store
+  when: system_certificates_install_list is defined
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ system_certificates_root_dir }}/{{ item | basename }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Update CA Trust
+  loop: "{{ system_certificates_install_list }}"
+...
