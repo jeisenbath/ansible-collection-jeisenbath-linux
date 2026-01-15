@@ -1,0 +1,5 @@
+---
+# defaults file for system_certificates
+system_certificates_os_family: RedHat
+# system_certificates_install_list:
+...

@@ -1,0 +1,4 @@
+---
+system_certificates_root_dir: /etc/pki/ca-trust/source/anchors
+system_certificates_update_command: update-ca-trust
+...

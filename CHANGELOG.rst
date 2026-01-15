@@ -5,6 +5,19 @@ Jeisenbath.Linux Release Notes
 .. contents:: Topics
 
 
+v1.2.0
+======
+
+Release Summary
+---------------
+
+Released 2026-01-15
+
+Major Changes
+-------------
+
+- added system_certificates role
+
 v1.1.0
 ======
 

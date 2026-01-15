@@ -21,3 +21,12 @@ releases:
     - filesystems.yml
     - interfaces.yml
     release_date: '2025-07-11'
+  1.2.0:
+    changes:
+      major_changes:
+      - added system_certificates role
+      release_summary: Released 2026-01-15
+    fragments:
+    - release_summary.yml
+    - system_cert.yml
+    release_date: '2026-01-15'
