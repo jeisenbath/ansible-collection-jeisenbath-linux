@@ -1,0 +1,7 @@
+---
+# handlers file for system_certificates
+- name: Update CA Trust
+  ansible.builtin.command:
+    cmd: "{{ system_certificates_update_command }}"
+  changed_when: true
+...
