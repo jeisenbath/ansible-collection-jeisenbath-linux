@@ -5,6 +5,19 @@ Jeisenbath.Linux Release Notes
 .. contents:: Topics
 
 
+v1.2.1
+======
+
+Release Summary
+---------------
+
+Released 2026-03-02
+
+Minor Changes
+-------------
+
+- system_certificates role - add flush handlers task
+
 v1.2.0
 ======
 
