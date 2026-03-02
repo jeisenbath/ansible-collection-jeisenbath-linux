@@ -30,3 +30,11 @@ releases:
     - release_summary.yml
     - system_cert.yml
     release_date: '2026-01-15'
+  1.2.1:
+    changes:
+      minor_changes:
+      - system_certificates role - add flush handlers task
+      release_summary: Released 2026-03-02
+    fragments:
+    - flush-handlers.yml
+    release_date: '2026-03-02'
