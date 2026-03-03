@@ -13,4 +13,7 @@
     mode: '0644'
   notify: Update CA Trust
   loop: "{{ system_certificates_install_list }}"
+
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
 ...
